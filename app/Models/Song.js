@@ -8,6 +8,9 @@ export default class Song {
     this.price = data.trackPrice || data.price;
     this.preview = data.previewUrl || data.preview;
     this._id = data.trackId || data._id;
+    this.sandboxSong = false
+    if (data.user)
+      this.sandboxSong = true
 
   }
 
@@ -26,7 +29,7 @@ export default class Song {
   }
 
   get activeButton() {
-    if (this.id) {
+    if (this.sandboxSong) {
       return ` <button class="btn btn-danger" onclick="app.playlistController.removeSong('${this.id}')"> Remove </button>`
     } return ` <button class="btn btn-success" onclick="app.playlistController.addSong()"> Add </button>`
   }
