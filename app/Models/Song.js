@@ -12,7 +12,14 @@ export default class Song {
 
   get Template() {
     return `
-
+    <div class="card" style="width: 18rem;">
+    <img src="${this.albumArt}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${this.artist} - ${this.title}</h5>
+      <p class="card-text">Album: ${this.album} | Buy now $${this.price}</p>
+      <a href="#" class="btn btn-primary">Song Preview</a>
+    </div>
+  </div>
         `;
   }
 
