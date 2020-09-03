@@ -1,31 +1,29 @@
 import songsService from "../Services/SongsService.js";
-import {ProxyState} from "../AppState.js"
+import { ProxyState } from "../AppState.js"
 
 //Private
 /**Draws the Search results to the page */
-function _drawResults() { 
+function _drawResults() {
   let template = ""
   let res = ProxyState.songs
-  res.forEach(r => template += `<img src="${r.albumArt}" onclick="app.songsController.setActive()">${r.artist} - ${r.title}</img>`)
+  res.forEach(r => template += `<img src="${r.albumArt}" onclick="app.songsController.viewSong(${r._id})">${r.artist} - ${r.title}</img>`)
   document.getElementById("songs").innerHTML = template
- }
-
-function _drawActive(){
-  if(ProxyState.activeSong) {
-    document.getElementById("active-song").innerHTML = ProxyState.activeSong.Template
-  } else {
-    document.getElementById("active-song").innerHTML = ""
-  }
 }
 
+function _drawActive() {
+  if (ProxyState.activeSong) {
+    document.getElementById("active-song").innerHTML = ProxyState.activeSong.activeTemplate
+  } else document.getElementById("active-song").innerHTML = ""
+}
 /**Draws the Users saved songs to the page */
-function _drawPlaylist() { }
+//function _drawPlaylist() { }
 
 //Public
 export default class SongsController {
   constructor() {
     ProxyState.on("songs", _drawResults)
     ProxyState.on("activeSong", _drawActive)
+    this.getSong()
     //TODO Don't forget to register your listeners and get your data
   }
 
@@ -39,9 +37,19 @@ export default class SongsController {
       console.error(error);
     }
   }
-
-  setActive(songId){
-    songsService.setActive(songId)
+  getSong() {
+    try {
+      songsService.getSong()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  viewSong(songId) {
+    try {
+      songsService.viewSong(songId)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   /**

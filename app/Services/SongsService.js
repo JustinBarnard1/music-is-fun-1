@@ -1,6 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import Song from "../Models/Song.js";
-import { sandBoxApi } from "./AxiosService.js";
+import { sandboxApi } from "./AxiosService.js";
 
 class SongsService {
   /**
@@ -12,27 +12,27 @@ class SongsService {
     let url = "https://itunes.apple.com/search?callback=?&term=" + query;
     // @ts-ignore
     $.getJSON(url)
-    .then(res => {
+      .then(res => {
         ProxyState.songs = res.results.map(rawData => new Song(rawData));
       })
       .catch(err => {
         throw new Error(err);
       });
   }
-  
+
   /**
    * Retrieves the saved list of songs from the sandbox
    */
-  async getMySongs() {
-    let res = await sandBoxApi.get()
+  async getSong() {
+    let res = await sandboxApi.get()
     //TODO What are you going to do with this result
     let results = res.data.data.map(rawData => new Song(rawData));
   }
-  setActive(songId) {
+  viewSong(songId) {
     let song = ProxyState.songs.find(s => s._id == songId)
     ProxyState.activeSong = song
   }
-  
+
   /**
    * Takes in a song id and sends it from the search results to the sandbox to be saved.
    * Afterwords it will update the store to reflect saved info

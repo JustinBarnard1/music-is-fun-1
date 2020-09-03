@@ -1,5 +1,5 @@
 // @ts-ignore
-export const sandBoxApi = axios.create({
+export const sandboxApi = axios.create({
   //TODO Change YOURNAME to your actual name
-  baseURL: "//bcw-sandbox.herokuapp.com/api/YOURNAME/songs"
+  baseURL: "//bcw-sandbox.herokuapp.com/api/JoeJustin/songs"
 });
