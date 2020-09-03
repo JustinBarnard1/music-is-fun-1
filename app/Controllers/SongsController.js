@@ -11,11 +11,10 @@ function _drawResults() {
  }
 
 function _drawActive(){
-  let res = document.getElementById("active-song")
   if(ProxyState.activeSong) {
-    res.innerHTML = ProxyState.activeSong.Template 
+    document.getElementById("active-song").innerHTML = ProxyState.activeSong.Template
   } else {
-    res.innerHTML = ""
+    document.getElementById("active-song").innerHTML = ""
   }
 }
 
@@ -42,7 +41,7 @@ export default class SongsController {
   }
 
   setActive(songId){
-      songsService.setActive(songId)
+    songsService.setActive(songId)
   }
 
   /**
