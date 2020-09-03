@@ -36,6 +36,23 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.songlist {
+  height: 73vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.playlist {
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.listImg{
+  max-height: 75px;
+  max-width: 75px;
+}
+
 *,
 *::before,
 *::after {

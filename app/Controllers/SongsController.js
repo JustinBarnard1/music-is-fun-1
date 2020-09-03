@@ -6,7 +6,7 @@ import { ProxyState } from "../AppState.js"
 function _drawResults() {
   let template = ""
   let res = ProxyState.songs
-  res.forEach(r => template += `<img src="${r.albumArt}" onclick="app.songsController.viewSong(${r._id})">${r.artist} - ${r.title}</img>`)
+  res.forEach(r => template += `<div class="card bg-danger my-1"  onclick="app.songsController.viewSong(${r._id})"><img class="listImg"src="${r.albumArt}">${r.artist} - ${r.title}</img></div>`)
   document.getElementById("songs").innerHTML = template
 }
 

@@ -16,12 +16,16 @@ export default class Song {
 
   get Template() {
     return `
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 30rem; height: 50rem;">
     <img src="${this.albumArt}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">${this.artist} - ${this.title}</h5>
+      <h5 class="card-title")">${this.artist} - ${this.title}</h5>
       <p class="card-text">Album: ${this.album} | Buy now $${this.price}</p>
-      <a href="#" class="btn btn-primary">Song Preview</a>
+      <audio controls>
+  <source src="${this.preview}" type="audio/ogg">
+  <source src="${this.preview}" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio>
       ${this.activeButton}
     </div>
   </div>
