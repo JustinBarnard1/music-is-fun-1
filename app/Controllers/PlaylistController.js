@@ -12,7 +12,7 @@ function _drawActive() {
 function _drawMySong() {
     let song = ProxyState.playlist
     let template = ""
-    song.forEach(r => template += `<img src="${r.albumArt}" onclick="app.playlistController.setActive()">${r.artist} - ${r.title}</img>`)
+    song.forEach(r => template += `<img src="${r.albumArt}" onclick="app.playlistController.setActive('${r._id}')">${r.artist} - ${r.title}</img>`)
     document.getElementById('playlist').innerHTML = template
 }
 
@@ -30,8 +30,7 @@ export default class PlaylistController {
         }
     }
     setActive(songId) {
-        debugger
-        songsService.setActive(songId)
+        playlistService.setActive(songId)
     }
     addSong() {
         try {
