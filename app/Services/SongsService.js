@@ -28,8 +28,9 @@ class SongsService {
     //TODO What are you going to do with this result
     let results = res.data.data.map(rawData => new Song(rawData));
   }
-  async drawActive() {
-    let res = await 
+  setActive(songId) {
+    let song = ProxyState.songs.find(s => s._id == songId)
+    ProxyState.activeSong = song
   }
   
   /**
